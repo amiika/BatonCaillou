@@ -17,6 +17,10 @@ const app = new Application(
   saved_tables,
 )
 
+window.onbeforeunload = function(){
+  // Save state before leaving the page
+  localStorage.setItem("tables", app.state.encodeToBase64())
+}
 
 // Global main loop
 function screenDraw() {
