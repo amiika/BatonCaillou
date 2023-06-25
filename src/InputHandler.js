@@ -28,8 +28,8 @@ export class InputHandler {
 
     // Calling each registered key handler.
     this.keyHandlerFunctions.forEach(func => func(event));
-    console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
-    console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
+    // console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
+    // console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
   }
 
   keyUpListener = (event) => {
@@ -114,17 +114,17 @@ export class InputHandler {
     if (event.key === "ArrowRight") {
       let amount = this.keyPresses["Control"] ? 5 : 1;
       let shift = this.keyPresses["Shift"] ? true : false;
-      if (amount == 1) {
-        if (shift) {
-          cursor.x_size = cursor.x + (cursor.x_size) <= grid.width - 1 ? cursor.x_size + 1 : cursor.x_size
+      if (shift) {
+        if (amount == 1) {
+            cursor.x_size = cursor.x <= grid.width - (cursor.x_size) - 1 ? cursor.x_size + 1 : cursor.x_size
+          } else {
+            cursor.x = cursor.x <= grid.width - cursor.x_size  ? cursor.x : cursor.x + amount
+          }
+        } else if (amount > 1) {
+            cursor.x = cursor.x >= grid.width - 5 ? cursor.x : cursor.x + amount
         } else {
-          cursor.x = cursor.x + cursor.x_size >= grid.width  ? cursor.x : cursor.x + amount
+          cursor.x = cursor.x + cursor.x_size >= grid.width ? cursor.x : cursor.x + amount
         }
-      } else if (amount > 1) {
-        cursor.x = cursor.x >= grid.width - 5 ? cursor.x : cursor.x + amount
-      } else {
-
-      }
     }
   }
 
