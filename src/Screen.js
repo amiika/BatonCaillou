@@ -25,7 +25,7 @@ export class Screen {
     this.context.fillStyle = back;
     this.context.textAlign = "center";
     this.context.font = `${this.fontSize}px monospace`;
-    this.context.fillText("█", 
+    this.context.fillText("████",
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
       (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
     // Character

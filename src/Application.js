@@ -32,17 +32,22 @@ export class Application {
 
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
-          this.screen.drawPixelWithBackground(
-            i, j, "white", "black", "@");
+          if (cursor.x_size > 1 || cursor.y_size > 1) {
+            this.screen.drawPixelWithBackground(
+              i, j, "black", "white", "@");
+          } else {
+            this.screen.drawPixelWithBackground(
+              i, j, "white", "black", "@");
+          }
         } else {
 
           // A tile can either be in the selection zone or not
           if ((i >= cursor.x && i < cursor.x + cursor.x_size)
             && ((j >= cursor.y && j < cursor.y + cursor.y_size))){
             this.screen.drawPixelWithBackground(
-              i, j, "white", "black", table.content[i][j].content.repr);
+              i, j, "black", "white", table.content[i][j].content.repr);
           } else {
-            this.screen.drawPixel(i, j, "black", table.content[i][j].content.repr);
+            this.screen.drawPixel(i, j, "white", table.content[i][j].content.repr);
           }
         }
       }
