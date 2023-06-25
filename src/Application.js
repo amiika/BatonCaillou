@@ -33,6 +33,17 @@ export class Application {
     let table = this.state.table;
     let cursor = this.state.cursor;
 
+    for (let i=0; i < table.length; i++) {
+      for (let j=0; j < table.content[i].length; j++) {
+        if (i % 5 == 0 && j % 5 == 0) {
+          if (table.content[i][j+1].content == " ") {
+            this.screen.drawPixel(i, j+1, this.textColor, "·")
+          }
+        }
+      }
+    }
+
+
     // Grid drawing routine
     for (let i=0; i < table.length; i++) {
       for (let j=0; j < table.content[i].length; j++) {
