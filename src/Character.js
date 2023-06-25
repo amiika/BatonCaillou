@@ -6,7 +6,7 @@ export class Character {
 export class EmptyChar extends Character {
   constructor() {
     super();
-    this.repr = ".";
+    this.repr = "·";
   }
 }
 

@@ -17,7 +17,7 @@ export class Screen {
     this.context.font = `${this.fontSize}px jgs7`;
     this.context.fillText(character, 
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
-      (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
+      (this.pixel.height * y) + Math.floor(this.pixel.height / 1.5))
   }
 
   drawPixelWithBackground(x, y, front, back, character) {
@@ -27,12 +27,12 @@ export class Screen {
     this.context.font = `${this.fontSize}px jgs7`;
     this.context.fillText("████",
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
-      (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
+      (this.pixel.height * y) + Math.floor(this.pixel.height / 1.5))
     // Character
     this.context.fillStyle = front;
     this.context.fillText(character, 
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
-      (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
+      (this.pixel.height * y) + Math.floor(this.pixel.height / 1.5))
   }
 
   drawCursor(x, y, color) {
