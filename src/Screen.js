@@ -8,7 +8,7 @@ export class Screen {
       'height': 10, 'width': 10,
     };
     this.fontSize = this.pixel.height;
-    this.fontName = "jgs5"
+    this.fontName = "jgs5";
   }
 
   drawPixel(x, y, color, character) {

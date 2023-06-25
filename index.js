@@ -1,23 +1,28 @@
 import { Application } from './src/Application.js';
 
 const page = {
-  'canvas': document.getElementById("canvas"),
-  'scale': window.devicePixelRatio,
-  'context': canvas.getContext("2d"),
-  'width': Math.floor(window.innerWidth * window.devicePixelRatio || 2),
-  'height': Math.floor(window.innerHeight * window.devicePixelRatio || 2),
+  canvas: document.getElementById("canvas"),
+  scale: window.devicePixelRatio,
+  context: canvas.getContext("2d"),
+  width: Math.floor(window.innerWidth * window.devicePixelRatio || 2),
+  height: Math.floor(window.innerHeight * window.devicePixelRatio || 2),
 };
 
 function handleResize() {
-  page.canvas = document.getElementById("canvas");
   page.scale = window.devicePixelRatio;
-  page.canvas.width = Math.floor(window.innerWidth * window.devicePixelRatio || 2) ;
-  page.canvas.height = Math.floor(window.innerHeight * window.devicePixelRatio || 2);
-  page.context.scale(window.devicePixelRatio, window.devicePixelRatio);
-  page.context.canvas.width = window.innerWidth;
-  page.context.canvas.height = window.innerHeight;
-  console.log("Resizing like a pro")
+  page.width = Math.floor(window.innerWidth * window.devicePixelRatio || 2);
+  page.height = Math.floor(window.innerHeight * window.devicePixelRatio || 2);
+  
+  page.canvas.width = page.width;
+  page.canvas.height = page.height;
+  
+  page.context.scale(page.scale, page.scale);
+  page.context.canvas.width = page.width;
+  page.context.canvas.height = page.height;
+  
+  console.log("Resizing like a pro");
 }
+
 window.onresize = handleResize;
 handleResize();
 
