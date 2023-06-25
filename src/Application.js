@@ -3,7 +3,7 @@ import { State } from './State.js';
 import { InputHandler } from './InputHandler.js';
 
 export class Application {
-  constructor(canvas, context) {
+  constructor(canvas, context, saved_tables) {
     // Table Grid Size
     this.grid = {
       height: 40,
@@ -13,7 +13,7 @@ export class Application {
     // Graphical display
     this.screen = new Screen(this, canvas, context);
     // Application state
-    this.state = new State(this);
+    this.state = new State(this, saved_tables);
     // Input handling
     this.keyboard = new InputHandler(this);
     // Global iterator for the number of updates
@@ -25,7 +25,6 @@ export class Application {
   }
 
   process() {
-    // Let's start by writing a table on the screen
     this.iterator++;
     if (this.iterator >= 1000) {
       this.iterator = 0;
@@ -52,9 +51,9 @@ export class Application {
           if ((i >= cursor.x && i < cursor.x + cursor.x_size)
             && ((j >= cursor.y && j < cursor.y + cursor.y_size))){
             this.screen.drawPixelWithBackground(
-              i, j, this.bgColor, this.textColor, table.content[i][j].content.repr);
+              i, j, this.bgColor, this.textColor, table.content[i][j].content);
           } else {
-            this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content.repr);
+            this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content);
           }
         }
       }
