@@ -3,7 +3,7 @@ import { isNumeric, isLetter } from './Utils.js';
 export class Cell {
   constructor(char) {
     if (char == null) {
-      this.content = "·";
+      this.content = " ";
     } else {
       this.content = null;
       this.replaceContent(char);
@@ -23,7 +23,7 @@ export class Cell {
       this.content = event.toString();
       return;
     }
-    if (event === ".") {
+    if (event === " ") {
       this.content = event;
       return;
     }

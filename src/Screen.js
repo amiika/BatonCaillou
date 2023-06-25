@@ -58,5 +58,3 @@ export class Screen {
     console.log('Cleaning the screen');
   }
 }
-
-

@@ -6,7 +6,7 @@ export class Application {
   constructor(canvas, context, saved_tables) {
     // Table Grid Size
     this.grid = {
-      height: 40, width: 80,
+      height: 40, width: 60,
     }
     this.table_number = 48;
 
