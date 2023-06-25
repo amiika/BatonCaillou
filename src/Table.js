@@ -28,8 +28,10 @@ export class Table {
     let accumulator = []
     let char_zone = [];
 
-    for (var i=cursor.x; i < cursor.x + cursor.x_size; i++) {
-      char_zone.push(accumulator)
+    for (var i=cursor.x; i < cursor.x + cursor.x_size + 1; i++) {
+      if (i > cursor.x) {
+        char_zone.push(accumulator)
+      }
       accumulator = []
       for (var j=cursor.y; j < cursor.y + cursor.y_size; j++) {
         accumulator.push(this.content[i][j].content.repr)
