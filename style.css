@@ -11,13 +11,11 @@ body {
 
 canvas {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);               
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
   background: #0000AA;
   box-sizing: border-box;
-  width: 95vw;
-  height: 95vh;
-  border: 5vh solid #0088FF;
+  width: 95vw; height: 95vh;
+  border: 2vh solid #0088FF;
   padding: 0;
 }
