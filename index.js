@@ -1,13 +1,20 @@
 import { Application } from './src/Application.js';
 
 const page = {
-  'dpr': window.devicePixelRatio || 1,
   'canvas': document.getElementById("canvas"),
-  'context': canvas.getContext("2d"),
   'scale': window.devicePixelRatio,
-  'width': Math.floor(window.innerWidth * window.devicePixelRatio),
-  'height': Math.floor(window.innerHeight * window.devicePixelRatio),
+  'context': canvas.getContext("2d"),
+  'width': Math.floor(window.innerWidth * window.devicePixelRatio || 2),
+  'height': Math.floor(window.innerHeight * window.devicePixelRatio || 2),
 };
+
+page.canvas.width = page.width;
+page.canvas.height = page.height;
+page.context.scale(page.scale, page.scale);
+page.canvas.style.width = page.width / page.scale + 'px';
+page.canvas.style.height = page.height / page.scale + 'px';
+
+
 
 // Read tables data from Local Storage
 let saved_tables = localStorage.getItem("tables");
