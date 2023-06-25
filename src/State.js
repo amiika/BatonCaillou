@@ -5,7 +5,10 @@ import { Range } from './Range.js';
 export class State {
   constructor(application) {
     this.app = application;
-    this.cursor = new Cursor();
+    this.cursor = new Cursor(
+      Math.floor(this.app.grid.height / 2),
+      Math.floor(this.app.grid.width / 2)
+    );
     this.copy_buffer = [];
     this.tables = {
       0: new Table(this.app, this.app.grid.width, this.app.grid.height), 

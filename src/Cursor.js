@@ -1,7 +1,7 @@
 export class Cursor {
-  constructor() {
-    this.x = 0;
-    this.y = 0;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
     this.x_size = 1;
     this.y_size = 1;
   }
