@@ -163,13 +163,10 @@ export class InputHandler {
     let grid = this.app.grid;
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (control_pressed && event.key == "c") {
-      console.log("User trying to copy something")
-      return
+      let zone_content = this.app.state.table.getZone(cursor);
     } else if (control_pressed && event.key == "v") {
-      console.log("User trying to paste something")
-      return
+      console.log(this.app.state.copy_buffer)
     }
   }
-
 }
 

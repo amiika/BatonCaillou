@@ -1,7 +1,8 @@
 import { Cell } from './Cell.js';
 
 export class Table {
-  constructor(width, height) {
+  constructor(application, width, height) {
+    this.app = application;
     this.width = width;
     this.height = height;
     this.content = this.createEmptyTable();
@@ -22,6 +23,18 @@ export class Table {
     return table;
   }
 
-  getZone() {
+  getZone = (cursor) => {
+    let copy_buffer = this.app.state.copy_buffer;
+    let accumulator = []
+    let char_zone = [];
+
+    for (var i=cursor.x; i < cursor.x + cursor.x_size; i++) {
+      char_zone.push(accumulator)
+      accumulator = []
+      for (var j=cursor.y; j < cursor.y + cursor.y_size; j++) {
+        accumulator.push(this.content[i][j].content.repr)
+      }
+    }
+    this.app.state.copy_buffer = char_zone;
   }
 }

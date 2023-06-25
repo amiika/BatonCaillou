@@ -13,6 +13,8 @@ const app = new Application(
   page['canvas'], page['context']
 )
 
+// page['canvas'].style.imageRendering = "pixelated";
+
 // Global main loop
 function screenDraw() {
   app.screen.refresh();
