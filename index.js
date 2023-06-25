@@ -9,11 +9,14 @@ const page = {
   'height': Math.floor(window.innerHeight * window.devicePixelRatio),
 };
 
+// Read tables data from Local Storage
+let saved_tables = localStorage.getItem('tables');
+
 const app = new Application(
-  page['canvas'], page['context']
+  page['canvas'], page['context'],
+  saved_tables,
 )
 
-// page['canvas'].style.imageRendering = "pixelated";
 
 // Global main loop
 function screenDraw() {

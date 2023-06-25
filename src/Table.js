@@ -34,7 +34,7 @@ export class Table {
       }
       accumulator = []
       for (var j=cursor.y; j < cursor.y + cursor.y_size; j++) {
-        accumulator.push(this.content[i][j].content.repr)
+        accumulator.push(this.content[i][j].content)
       }
     }
     this.app.state.copy_buffer = char_zone;
