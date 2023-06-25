@@ -19,7 +19,7 @@ export class Cell {
       this.content = event.toString();
       return;
     }
-    if (event === ".") {
+    if (event === "·") {
       this.content = event;
       return;
     }

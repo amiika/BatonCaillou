@@ -40,10 +40,10 @@ export class Application {
         if (i == cursor.x && j == cursor.y) {
           if (cursor.x_size > 1 || cursor.y_size > 1) {
             this.screen.drawPixelWithBackground(
-              i, j, this.bgColor, this.textColor, "@");
+              i, j, this.bgColor, this.textColor, "█");
           } else {
             this.screen.drawPixelWithBackground(
-              i, j, this.textColor, this.bgColor, "@");
+              i, j, this.textColor, this.bgColor, "█");
           }
         } else {
 
