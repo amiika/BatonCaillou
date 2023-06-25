@@ -1,33 +1,35 @@
-# Leon Grille
+# Bâton Caillou
 
-Une grille ASCII pour une application de _live coding_ après discussion avec Léon Denise. Tout ceci n'est qu'un test et il faudra le mettre sur Git lorsque ce sera plus complet. Pour le lancer, serveur local à l'ancienne.
+_Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrabbits/Orca) user interface. I just wanted to program it to see if I could then come up with a new different sequencer using the same format. This project does **NOTHING** for the moment. I also see it as a way to teach myself some JavaScript.
 
 # TODO
 
-## Graphisme
+## Graphics
 
-- [ ] Lisser le canevas (dégueu si zoom ou écran Retina)
-- [ ] Polices, etc...
-- [ ] Ligne inférieure : invité de commande et inspection
-- [ ] Ligne supérieure de l'état du programme
+- [ ] Better font!
+- [ ] Proper scaling for the canvas (it is blurry and not nice to Retina screens)
+- [ ] Inferior command line / writing zone
+- [ ] Superior command line / writing zone
 
-## Données
+## Data
 
-- [ ] méthodes pour récupérer/lire le contenu de la grille.
-- [ ] enregistrer / récupérer une grille au format textuel.
-- [ ] écrire sur la grille / effacer sur la grille
+- [ ] Read/Write to the grid.
+  - [ ] Store grid content in memory (cookies?)
+- [ ] Support multiple grids in parallel.
 
 ## Interaction
 
-- [ ] déplacements
+- [X] déplacements
   - [X] déplacements simples
   - [X] déplacements rapides (Ctrl)
-  - [ ] curseur de zone
+  - [X] curseur de zone
 - [ ] Invité de commande pour scripter la grille
-- [ ] Raccourcis basiques
+- [X] Raccourcis basiques
+  - **Shift** : create a zone selection.
+  - **Ctrl** : move faster (5 by 5).
 
-## Connectivité
+## I/O
 
-- [ ] Horloge / Scheduler
-- [ ] Support MIDI
-- [ ] Support OSC
+- [ ] Scheduler
+- [ ] MIDI
+- [ ] OSC
