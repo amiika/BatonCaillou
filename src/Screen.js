@@ -44,7 +44,7 @@ export class Screen {
 
   computePixelSize() {
     this.pixel.height = this.canvas.height / this.app.grid.height;
-    this.pixel.width = this.canvas.width / this.app.grid.width;
+    this.pixel.width = (this.canvas.width / this.app.grid.width);
     this.fontSize = this.pixel.height / 1.25;
   }
 

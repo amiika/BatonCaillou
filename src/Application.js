@@ -6,8 +6,7 @@ export class Application {
   constructor(canvas, context, saved_tables) {
     // Table Grid Size
     this.grid = {
-      height: 40,
-      width: 40,
+      height: 40, width: 80,
     }
 
     // Graphical display
@@ -67,18 +66,18 @@ export class Application {
 
     // Print grid index number
     this.screen.drawPixelWithBackground(
-      this.grid.height - 1, 0,
+      this.grid.width - 1, 0,
       this.textColor, this.bgColor, this.state.table_index.value.toString()
     )
 
     // Print iterator
     this.screen.drawPixelWithBackground(
-      0.5, 0.15,
+      0.25, 0.15,
       this.textColor, this.bgColor, this.iterator
     )
 
     // Print command line
     this.screen.drawPixelWithBackground(
-      2.5, 0.15, this.textColor, this.bgColor, ">")
+      2.15, 0.15, this.textColor, this.bgColor, "▶")
   }
 }

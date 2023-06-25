@@ -7,8 +7,8 @@ export class State {
   constructor(application, saved_tables) {
     this.app = application;
     this.cursor = new Cursor(
-      Math.floor(this.app.grid.height / 2),
-      Math.floor(this.app.grid.width / 2)
+      Math.floor(this.app.grid.width / 2),
+      Math.floor(this.app.grid.height / 2)
     );
     this.copy_buffer = [];
     this.tables = {
