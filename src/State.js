@@ -4,25 +4,17 @@ import { Range } from './Range.js';
 import { Cell } from './Cell.js';
 
 export class State {
-  constructor(application, saved_tables) {
+  constructor(application, table_number, saved_tables) {
     this.app = application;
     this.cursor = new Cursor(
       Math.floor(this.app.grid.width / 2),
       Math.floor(this.app.grid.height / 2)
     );
     this.copy_buffer = [];
-    this.tables = {
-      0: new Table(this.app, this.app.grid.width, this.app.grid.height), 
-      1: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      2: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      3: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      4: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      5: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      6: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      7: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      8: new Table(this.app, this.app.grid.width, this.app.grid.height),
-      9: new Table(this.app, this.app.grid.width, this.app.grid.height),
-    };
+    this.tables = {}
+    for (let i = 0; i < table_number; i++) {
+      this.tables[i] = new Table(this.app, this.app.grid.width, this.app.grid.height);
+    }
     if (saved_tables !== null) {
       saved_tables = JSON.parse(atob(saved_tables))
       // Iterating over each table
@@ -37,7 +29,7 @@ export class State {
         }
       }
     }
-    this.table_index = new Range(0, 10);
+    this.table_index = new Range(0, table_number);
     this.table = this.tables[this.table_index.value];
   }
 

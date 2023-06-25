@@ -8,7 +8,7 @@ export class Screen {
       'height': 10, 'width': 10,
     };
     this.fontSize = this.pixel.height;
-    this.fontName = "jgs7"
+    this.fontName = "jgs5"
   }
 
   drawPixel(x, y, color, character) {
@@ -26,7 +26,7 @@ export class Screen {
     this.context.fillStyle = back;
     this.context.textAlign = "center";
     this.context.font = `${this.fontSize}px ${this.fontName}`;
-    this.context.fillText("████",
+    this.context.fillText("██",
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
       (this.pixel.height * y) + Math.floor(this.pixel.height / 1.5))
     // Character
