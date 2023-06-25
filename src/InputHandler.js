@@ -12,6 +12,8 @@ export class InputHandler {
       this.escapeKeyHandler,
       this.gridCharactersHandler,
       this.eraseCharacters,
+      this.commandHandler,
+      this.gridPageHandler,
     ];
   }
 
@@ -169,5 +171,19 @@ export class InputHandler {
       this.app.state.table.applyZone(cursor)
     }
   }
-}
 
+  commandHandler = (event) => {
+    if (event.key == "!") {
+      console.log("User would like to type a command")
+    }
+  }
+
+  gridPageHandler = (event) => {
+    if (event.key == "PageUp") {
+      this.app.state.table_index.next();
+    }
+    if (event.key == "PageDown") {
+      this.app.state.table_index.previous();
+    }
+  }
+}

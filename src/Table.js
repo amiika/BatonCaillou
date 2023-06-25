@@ -42,7 +42,6 @@ export class Table {
 
   applyZone = (cursor) => {
     let copy_buffer = this.app.state.copy_buffer;
-    // Need a double iteration
     copy_buffer.forEach((element, outerIndex) => {
       element.forEach((innerElement, innerIndex) => {
         this.content[cursor.x + outerIndex][cursor.y + innerIndex]

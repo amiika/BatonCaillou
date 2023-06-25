@@ -52,5 +52,13 @@ export class Application {
         }
       }
     }
+
+    // Print the index number on top-right corner
+    this.screen.drawPixelWithBackground(
+      this.grid.height - 1,
+      0,
+      "white", "black",
+      this.state.table_index.value.toString()
+    )
   }
 }

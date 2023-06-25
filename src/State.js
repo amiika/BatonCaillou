@@ -1,5 +1,6 @@
 import { Cursor } from './Cursor.js';
 import { Table } from './Table.js';
+import { Range } from './Range.js';
 
 export class State {
   constructor(application) {
@@ -18,7 +19,7 @@ export class State {
       8: new Table(this.app, this.app.grid.width, this.app.grid.height),
       9: new Table(this.app, this.app.grid.width, this.app.grid.height),
     };
-    this.table = this.tables[0];
-    console.log(this.table)
+    this.table_index = new Range(0, 10);
+    this.table = this.tables[this.table_index.value];
   }
 }
