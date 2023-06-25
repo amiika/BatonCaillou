@@ -72,7 +72,7 @@ export class Application {
 
     // Print iterator
     this.screen.drawPixelWithBackground(
-      0.25, 0.15,
+      0.65, 0.15,
       this.textColor, this.bgColor, this.iterator
     )
 
