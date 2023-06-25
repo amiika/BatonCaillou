@@ -6,8 +6,8 @@ export class Application {
   constructor(canvas, context, saved_tables) {
     // Table Grid Size
     this.grid = {
-      height: 48,
-      width: 80,
+      height: 40,
+      width: 40,
     }
 
     // Graphical display
@@ -18,6 +18,10 @@ export class Application {
     this.keyboard = new InputHandler(this);
     // Global iterator for the number of updates
     this.iterator = 0;
+    // Get text color from CSS
+    this.textColor = getComputedStyle(canvas).getPropertyValue("--light-blue")
+    // Get background color from CSS
+    this.bgColor = getComputedStyle(canvas).getPropertyValue("--blue")
   }
 
   process() {
@@ -36,10 +40,10 @@ export class Application {
         if (i == cursor.x && j == cursor.y) {
           if (cursor.x_size > 1 || cursor.y_size > 1) {
             this.screen.drawPixelWithBackground(
-              i, j, "black", "white", "@");
+              i, j, this.bgColor, this.textColor, "@");
           } else {
             this.screen.drawPixelWithBackground(
-              i, j, "white", "black", "@");
+              i, j, this.textColor, this.bgColor, "@");
           }
         } else {
 
@@ -47,9 +51,9 @@ export class Application {
           if ((i >= cursor.x && i < cursor.x + cursor.x_size)
             && ((j >= cursor.y && j < cursor.y + cursor.y_size))){
             this.screen.drawPixelWithBackground(
-              i, j, "black", "white", table.content[i][j].content);
+              i, j, this.bgColor, this.textColor, table.content[i][j].content);
           } else {
-            this.screen.drawPixel(i, j, "white", table.content[i][j].content);
+            this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content);
           }
         }
       }
@@ -57,23 +61,23 @@ export class Application {
 
     // Drawing the status bar at the top
     [...Array(this.grid.width).keys()].forEach((element) => {
-      this.screen.drawPixelWithBackground(element, 0, "black", "black", " ");
+      this.screen.drawPixelWithBackground(element, 0, this.bgColor, this.bgColor, " ");
     });
 
     // Print grid index number
     this.screen.drawPixelWithBackground(
-      this.grid.width - 1, 0,
-      "white", "black", this.state.table_index.value.toString()
+      this.grid.height - 1, 0,
+      this.textColor, this.bgColor, this.state.table_index.value.toString()
     )
 
     // Print iterator
     this.screen.drawPixelWithBackground(
-      0, 0,
-      "white", "black", this.iterator
+      0.5, 0.15,
+      this.textColor, this.bgColor, this.iterator
     )
 
     // Print command line
     this.screen.drawPixelWithBackground(
-      4, 0, "white", "black", ">")
+      2.5, 0.15, this.textColor, this.bgColor, ">")
   }
 }
