@@ -14,8 +14,6 @@ page.context.scale(page.scale, page.scale);
 page.canvas.style.width = page.width / page.scale + 'px';
 page.canvas.style.height = page.height / page.scale + 'px';
 
-
-
 // Read tables data from Local Storage
 let saved_tables = localStorage.getItem("tables");
 

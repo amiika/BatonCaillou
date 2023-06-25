@@ -6,16 +6,16 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 
 ## Graphics
 
-- [ ] Better font!
+- [X] Better font!
 - [ ] Proper scaling for the canvas (it is blurry and not nice to Retina screens)
 - [ ] Inferior command line / writing zone
 - [ ] Superior command line / writing zone
 
 ## Data
 
-- [ ] Read/Write to the grid.
-  - [ ] Store grid content in memory (cookies?)
-- [ ] Support multiple grids in parallel.
+- [X] Read/Write to the grid.
+  - [X] Store grid content in memory (using `localStorage`)
+- [X] Support multiple grids in parallel.
 
 ## Interaction
 
@@ -24,7 +24,8 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 - [X] Basic Shortcuts
   - **Shift** : create a zone selection.
   - **Ctrl** : move faster (5 by 5).
-- [ ] Fix grid overflow when moving around with zone selection ON
+  - **PageUp** / **PageDown** for switching grid
+- [X] Fix grid overflow when moving around with zone selection ON
 
 ## I/O
 
