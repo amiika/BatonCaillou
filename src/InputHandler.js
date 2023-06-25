@@ -181,9 +181,11 @@ export class InputHandler {
   gridPageHandler = (event) => {
     if (event.key == "PageUp") {
       this.app.state.table_index.next();
+      this.app.state.table = this.app.state.tables[this.app.state.table_index.value];
     }
     if (event.key == "PageDown") {
       this.app.state.table_index.previous();
+      this.app.state.table = this.app.state.tables[this.app.state.table_index.value];
     }
   }
 }
