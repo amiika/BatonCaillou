@@ -10,7 +10,7 @@ const page = {
 };
 
 // Read tables data from Local Storage
-let saved_tables = localStorage.getItem('tables');
+let saved_tables = localStorage.getItem("tables");
 
 const app = new Application(
   page['canvas'], page['context'],
