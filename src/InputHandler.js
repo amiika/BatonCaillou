@@ -161,11 +161,12 @@ export class InputHandler {
   copyPasteHandler = (event) => {
     let cursor = this.app.state.cursor;
     let grid = this.app.grid;
+    let copy_buffer = this.app.state.copy_buffer
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (control_pressed && event.key == "c") {
       let zone_content = this.app.state.table.getZone(cursor);
     } else if (control_pressed && event.key == "v") {
-      console.log(this.app.state.copy_buffer)
+      this.app.state.table.applyZone(cursor)
     }
   }
 }
