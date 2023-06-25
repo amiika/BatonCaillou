@@ -23,6 +23,9 @@ export class Application {
   process() {
     // Let's start by writing a table on the screen
     this.iterator++;
+    if (this.iterator >= 1000) {
+      this.iterator = 0;
+    }
     let table = this.state.table;
     let cursor = this.state.cursor;
 
@@ -53,10 +56,25 @@ export class Application {
       }
     }
 
-    // Print the grid index number on top-right corner
+    // Drawing the status bar at the top
+    [...Array(this.grid.width).keys()].forEach((element) => {
+      this.screen.drawPixelWithBackground(element, 0, "black", "black", " ");
+    });
+
+    // Print grid index number
     this.screen.drawPixelWithBackground(
       this.grid.height - 1, 0,
       "white", "black", this.state.table_index.value.toString()
     )
+
+    // Print iterator
+    this.screen.drawPixelWithBackground(
+      0, 0,
+      "white", "black", this.iterator
+    )
+
+    // Print command line
+    this.screen.drawPixelWithBackground(
+      1, 0, "white", "black", ">")
   }
 }
