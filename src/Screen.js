@@ -39,7 +39,7 @@ export class Screen {
   drawCursor(x, y, color) {
     this.context.fillStyle = color;
     this.context.font = `${this.fontSize}px ${this.fontName}`;
-    this.context.fillText("█", this.pixel.width*x, this.pixel.height*y);
+    this.context.fillText("▌", this.pixel.width*x, this.pixel.height*y);
   }
 
   computePixelSize() {
