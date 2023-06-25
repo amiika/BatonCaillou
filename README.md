@@ -31,3 +31,7 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 - [ ] Scheduler
 - [ ] MIDI
 - [ ] OSC
+
+## Credits
+
+- JGS Font by [Adel Faure](https://adelfaure.net/), released on [Velvetyne](https://velvetyne.fr/fonts/jgs-font/).

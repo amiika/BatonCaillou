@@ -14,7 +14,7 @@ export class Screen {
     // Character
     this.context.fillStyle = color;
     this.context.textAlign = "center";
-    this.context.font = `${this.fontSize}px monospace`;
+    this.context.font = `${this.fontSize}px jgs7`;
     this.context.fillText(character, 
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
       (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
@@ -24,7 +24,7 @@ export class Screen {
     //Background
     this.context.fillStyle = back;
     this.context.textAlign = "center";
-    this.context.font = `${this.fontSize}px monospace`;
+    this.context.font = `${this.fontSize}px jgs7`;
     this.context.fillText("████",
       (this.pixel.width * x) + Math.floor(this.pixel.width / 2),
       (this.pixel.height * y) + Math.floor(this.pixel.height / 2))
@@ -37,7 +37,7 @@ export class Screen {
 
   drawCursor(x, y, color) {
     this.context.fillStyle = color;
-    this.context.font = `${this.fontSize}px monospace`;
+    this.context.font = `${this.fontSize}px jgs7`;
     this.context.fillText("@", this.pixel.width*x, this.pixel.height*y);
   }
 
