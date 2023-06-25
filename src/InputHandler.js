@@ -10,6 +10,7 @@ export class InputHandler {
       this.keyRightHandler,
       this.EscapeKeyHandler,
       this.gridCharactersHandler,
+      this.eraseCharacters,
     ];
   }
 
@@ -139,6 +140,20 @@ export class InputHandler {
     if (validKeys.includes(event.key)) {
       table[cursor.x][cursor.y].replaceContent(event.key);
     }
+  }
+
+  eraseCharacters = (event) => {
+    let cursor = this.app.state.cursor;
+    let table = this.app.state.table.content;
+
+    if (event.key == "Backspace") {
+      for (var i = cursor.x; i < cursor.x + cursor.x_size; i++) {
+        for (var j = cursor.y; j < cursor.y + cursor.y_size; j++) {
+          table[i][j].replaceContent(".");
+        }
+      }
+    }
+
   }
 }
 

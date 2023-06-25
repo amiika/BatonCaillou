@@ -9,9 +9,15 @@ export class Cell {
   replaceContent = (event) => {
     if (isNumeric(event)) {
       this.content = new NumberChar(event);
+      return;
     }
     if (isLetter(event)) {
       this.content = new LetterChar(event);
+      return;
+    }
+    if (event === ".") {
+      this.content = new EmptyChar();
+      return;
     }
   }
 }
