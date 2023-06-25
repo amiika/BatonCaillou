@@ -28,8 +28,8 @@ export class InputHandler {
 
     // Calling each registered key handler.
     this.keyHandlerFunctions.forEach(func => func(event));
-    // console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
-    // console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
+    console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
+    console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
   }
 
   keyUpListener = (event) => {
@@ -49,7 +49,7 @@ export class InputHandler {
         if (shift) {
           cursor.y_size = cursor.y + cursor.y_size >= grid.height ? cursor.y_size : cursor.y_size + 1
         } else {
-          cursor.y = cursor.y + 1 >= grid.height ? cursor.y : cursor.y + amount;
+          cursor.y = cursor.y + cursor.y_size >= grid.height ? cursor.y : cursor.y + amount;
         }
       } else if (amount > 1) {
         cursor.y = cursor.y + amount >= grid.height ? cursor.y : cursor.y + amount;
@@ -116,9 +116,9 @@ export class InputHandler {
       let shift = this.keyPresses["Shift"] ? true : false;
       if (amount == 1) {
         if (shift) {
-          cursor.x_size = cursor.x + (cursor.x_size - 2) <= grid.width - 1 ? cursor.x_size + 1 : cursor.x_size
+          cursor.x_size = cursor.x + (cursor.x_size) <= grid.width - 1 ? cursor.x_size + 1 : cursor.x_size
         } else {
-          cursor.x = cursor.x >= grid.width - 1 ? cursor.x : cursor.x + amount
+          cursor.x = cursor.x + cursor.x_size >= grid.width  ? cursor.x : cursor.x + amount
         }
       } else if (amount > 1) {
         cursor.x = cursor.x >= grid.width - 5 ? cursor.x : cursor.x + amount
