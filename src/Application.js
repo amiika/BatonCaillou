@@ -6,8 +6,8 @@ export class Application {
   constructor(canvas, context) {
     // Table Grid Size
     this.grid = {
-      height: 10,
-      width: 10,
+      height: 40,
+      width: 40,
     }
 
     // Graphical display
