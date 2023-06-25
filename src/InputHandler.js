@@ -4,11 +4,12 @@ export class InputHandler {
     this.keyPresses = {};
     this.setupEventListeners();
     this.keyHandlerFunctions = [
+      this.copyPasteHandler,
       this.keyDownHandler,
       this.keyUpHandler,
       this.keyLeftHandler,
       this.keyRightHandler,
-      this.EscapeKeyHandler,
+      this.escapeKeyHandler,
       this.gridCharactersHandler,
       this.eraseCharacters,
     ];
@@ -125,7 +126,7 @@ export class InputHandler {
     }
   }
 
-  EscapeKeyHandler = (event) => {
+  escapeKeyHandler = (event) => {
     let cursor = this.app.state.cursor;
     if (event.key == "Escape") {
       // Resetting the cursor size
@@ -137,7 +138,8 @@ export class InputHandler {
     let cursor = this.app.state.cursor;
     let table = this.app.state.table.content;
     let validKeys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-    if (validKeys.includes(event.key)) {
+    let control_pressed = this.keyPresses["Control"] ? true : false;
+    if (validKeys.includes(event.key) && !control_pressed) {
       table[cursor.x][cursor.y].replaceContent(event.key);
     }
   }
@@ -155,5 +157,19 @@ export class InputHandler {
     }
 
   }
+
+  copyPasteHandler = (event) => {
+    let cursor = this.app.state.cursor;
+    let grid = this.app.grid;
+    let control_pressed = this.keyPresses["Control"] ? true : false;
+    if (control_pressed && event.key == "c") {
+      console.log("User trying to copy something")
+      return
+    } else if (control_pressed && event.key == "v") {
+      console.log("User trying to paste something")
+      return
+    }
+  }
+
 }
 
