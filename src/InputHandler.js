@@ -139,7 +139,7 @@ export class InputHandler {
   gridCharactersHandler = (event) => {
     let cursor = this.app.state.cursor;
     let table = this.app.state.table.content;
-    let validKeys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    let validKeys = "+-/*0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (validKeys.includes(event.key) && !control_pressed) {
       table[cursor.x][cursor.y].replaceContent(event.key);

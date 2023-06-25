@@ -8,11 +8,12 @@ export class Application {
     this.grid = {
       height: 40, width: 80,
     }
+    this.table_number = 48;
 
     // Graphical display
     this.screen = new Screen(this, canvas, context);
     // Application state
-    this.state = new State(this, saved_tables);
+    this.state = new State(this, this.table_number, saved_tables);
     // Input handling
     this.keyboard = new InputHandler(this);
     // Global iterator for the number of updates

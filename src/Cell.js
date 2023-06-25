@@ -11,6 +11,10 @@ export class Cell {
   }
 
   replaceContent = (event) => {
+    if ("+/-*".includes(event)) {
+      this.content = event.toString();
+      return;
+    }
     if (isNumeric(event)) {
       this.content = event.toString();
       return;
