@@ -1,6 +1,6 @@
 # Bâton Caillou
 
-_Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrabbits/Orca) user interface. I just wanted to program it to see if I could then come up with a new different sequencer using the same format. This project does **NOTHING** for the moment. I also see it as a way to teach myself some JavaScript.
+_Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrabbits/Orca) user interface. I just wanted to program it to see if I could then come up with a new different sequencer using the same format. This project does **NOTHING** for the moment. I also see it as a way to teach myself some JavaScript. You can test the app by visiting the [BâtonCaillou](https://batoncaillou.raphaelforment.fr) website.
 
 # TODO
 

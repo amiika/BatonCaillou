@@ -21,11 +21,6 @@ export class Application {
   }
 
   process() {
-    // Let's start by writing a table on the screen
-    // if (this.iterator % 50 == 0) {
-    //   console.log("Saving application state");
-    //   localStorage.setItem("tables", this.state.encodeToBase64())
-    // }
     this.iterator++;
     if (this.iterator >= 1000) {
       this.iterator = 0;
