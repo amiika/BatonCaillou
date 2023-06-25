@@ -19,14 +19,12 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 
 ## Interaction
 
-- [X] déplacements
-  - [X] déplacements simples
-  - [X] déplacements rapides (Ctrl)
-  - [X] curseur de zone
-- [ ] Invité de commande pour scripter la grille
-- [X] Raccourcis basiques
+- [X] Moving around
+- [ ] Command Line Interaction for Grid Manipulation
+- [X] Basic Shortcuts
   - **Shift** : create a zone selection.
   - **Ctrl** : move faster (5 by 5).
+- [ ] Fix grid overflow when moving around with zone selection ON
 
 ## I/O
 

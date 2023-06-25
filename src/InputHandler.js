@@ -9,6 +9,7 @@ export class InputHandler {
       this.keyLeftHandler,
       this.keyRightHandler,
       this.EscapeKeyHandler,
+      this.gridCharactersHandler,
     ];
   }
 
@@ -23,9 +24,8 @@ export class InputHandler {
 
     // Calling each registered key handler.
     this.keyHandlerFunctions.forEach(func => func(event));
-
-    console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
-    console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
+    // console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
+    // console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
   }
 
   keyUpListener = (event) => {
@@ -129,6 +129,15 @@ export class InputHandler {
     if (event.key == "Escape") {
       // Resetting the cursor size
       cursor.y_size = 1; cursor.x_size = 1;
+    }
+  }
+
+  gridCharactersHandler = (event) => {
+    let cursor = this.app.state.cursor;
+    let table = this.app.state.table.content;
+    let validKeys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    if (validKeys.includes(event.key)) {
+      table[cursor.x][cursor.y].replaceContent(event.key);
     }
   }
 }

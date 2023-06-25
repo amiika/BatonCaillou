@@ -17,9 +17,9 @@ export class NumberChar extends Character {
   }
 }
 
-export class TestChar extends Character {
-  constructor() {
+export class LetterChar extends Character {
+  constructor(character) {
     super();
-    this.repr = "x";
+    this.repr = character;
   }
 }

@@ -40,9 +40,9 @@ export class Application {
           if ((i >= cursor.x && i < cursor.x + cursor.x_size)
             && ((j >= cursor.y && j < cursor.y + cursor.y_size))){
             this.screen.drawPixelWithBackground(
-              i, j, "white", "black", table.content[i][j].content[0].repr);
+              i, j, "white", "black", table.content[i][j].content.repr);
           } else {
-            this.screen.drawPixel(i, j, "black", table.content[i][j].content[0].repr);
+            this.screen.drawPixel(i, j, "black", table.content[i][j].content.repr);
           }
         }
       }

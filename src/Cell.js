@@ -1,13 +1,17 @@
-import { EmptyChar, NumberChar, TestChar } from "./Character.js";
+import { EmptyChar, NumberChar, LetterChar } from "./Character.js";
+import { isNumeric, isLetter } from './Utils.js';
 
 export class Cell {
   constructor() {
-    this.content = [
-      new EmptyChar(),
-      new TestChar(),
-    ]
+    this.content = new EmptyChar();
   }
-  get length() {
-    return this.content.length;
+
+  replaceContent = (event) => {
+    if (isNumeric(event)) {
+      this.content = new NumberChar(event);
+    }
+    if (isLetter(event)) {
+      this.content = new LetterChar(event);
+    }
   }
 }
