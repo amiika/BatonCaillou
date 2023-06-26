@@ -38,9 +38,7 @@ export class State {
   }
 
   commandBufferUpdate(text) {
-    console.log(typeof(this.command_buffer))
     this.command_buffer.push(text);
-    console.log(this.command_buffer)
   }
 
   commandBufferClear = () => {

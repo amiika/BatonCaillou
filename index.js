@@ -10,19 +10,13 @@ const page = {
 
 // Read tables data from Local Storage
 let saved_tables = localStorage.getItem("tables");
+let FPS = 60;
 
 const app = new Application(
   page['canvas'], page['context'],
   saved_tables,
 )
 
-window.onkeydown = function(event){
-    var keyCode = event.keyCode;
-    if (keyCode == 191) {
-        event.preventDefault();
-        return false;
-    }
-}
 
 window.onbeforeunload = function(){
   // Save state before leaving the page
@@ -39,7 +33,10 @@ function loop(timeStamp) {
   screenDraw();
 
   // Request an animation frame
-  window.requestAnimationFrame(loop);
+  // 
+  setTimeout(() => {
+    window.requestAnimationFrame(loop);
+  }, 1000 / FPS);
 }
 
 loop()
