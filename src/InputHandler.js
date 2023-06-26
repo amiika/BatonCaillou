@@ -177,11 +177,11 @@ export class InputHandler {
     let copy_buffer = this.app.state.copy_buffer
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (control_pressed && event.key == "c") {
-      let zone_content = this.app.state.table.getZone(cursor);
+      let zone_content = this.app.state.table.getZoneInCopyBuffer(cursor);
     } else if (control_pressed && event.key == "v") {
-      this.app.state.table.applyZone(cursor)
+      this.app.state.table.pasteZone(cursor)
     } else if (control_pressed && event.key == "x") {
-      this.app.state.table.getZone(cursor);
+      this.app.state.table.getZoneInCopyBuffer(cursor);
       this.eraseCharacters({key: "Backspace"});
     }
   }
