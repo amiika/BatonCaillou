@@ -39,7 +39,7 @@ export class Application {
       // Loop trough line cells
       while (xi++ < table.width-1) {
 
-        const cell = table.content[xi][yi];
+        const cell = table.content[yi][xi];
 
         if(cursor.x == xi && cursor.y == yi) {
           text+="<span class='selection'>"+cell.content+"</span>";

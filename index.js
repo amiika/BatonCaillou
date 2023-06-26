@@ -4,10 +4,10 @@ import { Application } from './src/Application.js';
 let saved_tables = localStorage.getItem("tables");
 const app = new Application(saved_tables)
 
-//window.onbeforeunload = function(){
-//  // Save state before leaving the page
-//  localStorage.setItem("tables", app.state.encodeToBase64())
-//}
+window.onbeforeunload = function(){
+  // Save state before leaving the page
+  localStorage.setItem("tables", app.state.encodeToBase64())
+}
 
 let pre_output = document.getElementById("pre_output");
 
@@ -24,4 +24,5 @@ function loop(timeStamp) {
 }
 
 loop();
+
 console.log(app.process("text"));
