@@ -16,6 +16,14 @@ const app = new Application(
   saved_tables,
 )
 
+window.onkeydown = function(event){
+    var keyCode = event.keyCode;
+    if (keyCode == 191) {
+        event.preventDefault();
+        return false;
+    }
+}
+
 window.onbeforeunload = function(){
   // Save state before leaving the page
   localStorage.setItem("tables", app.state.encodeToBase64())

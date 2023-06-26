@@ -10,9 +10,6 @@ export class State {
       Math.floor(this.app.grid.width / 2),
       Math.floor(this.app.grid.height / 2)
     );
-    this.copy_buffer = [];
-    this.command_buffer = "";
-    this.command_memory = [];
     this.tables = {}
     for (let i = 0; i < table_number; i++) {
       this.tables[i] = new Table(this.app, this.app.grid.width, this.app.grid.height);
@@ -33,6 +30,21 @@ export class State {
     }
     this.table_index = new Range(0, table_number);
     this.table = this.tables[this.table_index.value];
+
+    // Textual buffers
+    this.copy_buffer = [];
+    this.command_buffer = [];
+    this.command_memory = [];
+  }
+
+  commandBufferUpdate(text) {
+    console.log(typeof(this.command_buffer))
+    this.command_buffer.push(text);
+    console.log(this.command_buffer)
+  }
+
+  commandBufferClear = () => {
+    this.command_buffer = [];
   }
 
   encodeToBase64 = () => {

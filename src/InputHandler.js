@@ -149,7 +149,7 @@ export class InputHandler {
   gridCharactersHandler = (event) => {
     let cursor = this.app.state.cursor;
     let table = this.app.state.table.content;
-    let validKeys = " +-/*0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    let validKeys = "#~+-/\\*0123456789âabcdeéèêëfghiïjklmnoôpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".split('');
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (validKeys.includes(event.key) && !control_pressed) {
       table[cursor.x][cursor.y].replaceContent(event.key);
@@ -189,7 +189,7 @@ export class InputHandler {
   commandHandler = (event) => {
     // Voiding the command buffer line when exiting!
     if (this.app.state.command_buffer && this.text_editing_mode ) {
-      this.app.state.command_buffer = "";
+      this.app.state.commandBufferClear();
     }
 
     if (event.key == "!") {
@@ -210,8 +210,6 @@ export class InputHandler {
   }
 
   passKeystoCommandLine = (event) => {
-    var new_string = this.app.state.command_buffer + String(event.key)
-    this.app.state.command_buffer = new_string
-    console.log(this.app.state.command_buffer)
+    this.app.state.commandBufferUpdate(String(event.key));
   }
 }

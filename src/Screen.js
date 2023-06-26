@@ -68,7 +68,7 @@ export class Screen {
   }
 
   clean() {
-    console.log('Cleaning the screen');
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
 

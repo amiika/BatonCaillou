@@ -25,6 +25,7 @@ export class Application {
   }
 
   process() {
+    this.screen.clean();
     this.screen.computePixelSize();
     this.iterator = this.iterator >= 100 ? 0 : this.iterator + 1;
 
