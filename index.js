@@ -4,14 +4,16 @@ import { Application } from './src/Application.js';
 let saved_tables = localStorage.getItem("tables");
 const app = new Application(saved_tables)
 
-window.onbeforeunload = function(){
-  // Save state before leaving the page
-  localStorage.setItem("tables", app.state.encodeToBase64())
-}
+//window.onbeforeunload = function(){
+//  // Save state before leaving the page
+//  localStorage.setItem("tables", app.state.encodeToBase64())
+//}
+
+let pre_output = document.getElementById("pre_output");
 
 // Global main loop
 function screenDraw() {
-  app.process();
+  pre_output.textContent = app.process("text");
 }
 
 function loop(timeStamp) {
@@ -21,4 +23,5 @@ function loop(timeStamp) {
   // Request an animation frame
 }
 
-loop()
+loop();
+console.log(app.process("text"));

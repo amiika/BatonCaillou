@@ -152,7 +152,7 @@ export class InputHandler {
     let validKeys = "#~+-/\\*0123456789âabcdeéèêëfghiïjklmnoôpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".split('');
     let control_pressed = this.keyPresses["Control"] ? true : false;
     if (validKeys.includes(event.key) && !control_pressed) {
-      table[cursor.x][cursor.y].replaceContent(event.key);
+      table[cursor.y][cursor.x].replaceContent(event.key);
       cursor.x = cursor.x <= this.app.grid.width - 2 ? cursor.x += 1 : cursor.x;
     }
   }
@@ -162,8 +162,8 @@ export class InputHandler {
     let table = this.app.state.table.content;
 
     if (event.key == "Backspace") {
-      for (var i = cursor.x; i < cursor.x + cursor.x_size; i++) {
-        for (var j = cursor.y; j < cursor.y + cursor.y_size; j++) {
+      for (var i = cursor.y; i < cursor.y + cursor.y_size; i++) {
+        for (var j = cursor.x; j < cursor.x + cursor.x_size; j++) {
           table[i][j].replaceContent(" ");
         }
       }
