@@ -50,25 +50,17 @@ export class Application {
 
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
-          if (cursor.x_size > 1 || cursor.y_size > 1 || !table.content[i][j].isEmpty()) {
-            this.screen.drawPixelWithBackground(
-              i, j, this.bgColor, this.textColor, table.content[i][j].content);
-          } else {
-            if(this.iterator%30<15) { // Blink
-              this.screen.drawPixelWithBackground(
-                i, j, this.bgColor, this.textColor, table.content[i][j].content);
-            }
-          }
+          const blink = this.iterator%30<15 == 0
+          this.screen.drawCursor(cursor, this.textColor, this.bgColor, table.content[i][j], blink)
         } else {
           // A tile can either be in the selection zone or not
-          if ((i >= cursor.x && i < cursor.x + cursor.x_size)
-            && ((j >= cursor.y && j < cursor.y + cursor.y_size))){
-              this.screen.drawPixelWithBackground(
-                i, j, this.bgColor, this.textColor, table.content[i][j].content);
+          if (this.screen.isInSelection(cursor,i,j)){
+            this.screen.drawSelection(i, j, this.bgColor, this.textColor, table.content[i][j]);
           } else {
             this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content);
           }
         }
+        
       }
     }
 
