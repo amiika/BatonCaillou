@@ -25,6 +25,7 @@ export class Application {
   }
 
   process() {
+
     this.screen.computePixelSize();
     this.iterator++;
     if (this.iterator >= 1000) {
@@ -83,6 +84,6 @@ export class Application {
 
     // Print command line
     this.screen.drawPixelWithBackground(
-      2.15, 0.15, this.textColor, this.bgColor, "▶")
+      2.15, 0.15, this.textColor, this.bgColor, `▶ ${this.state.command_buffer}`)
   }
 }

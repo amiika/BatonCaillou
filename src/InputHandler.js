@@ -3,7 +3,10 @@ export class InputHandler {
     this.app = application;
     this.keyPresses = {};
     this.setupEventListeners();
-    this.keyHandlerFunctions = [
+
+    this.text_editing_mode = false;
+    // Visual mode keybindings
+    this.normalKeyHandlerFunctions = [
       this.copyPasteHandler,
       this.keyDownHandler,
       this.keyUpHandler,
@@ -14,6 +17,12 @@ export class InputHandler {
       this.eraseCharacters,
       this.commandHandler,
       this.gridPageHandler,
+    ];
+
+    // Editing mode keybindings
+    this.editingKeyHandlerFunctions = [
+      this.commandHandler,
+      this.passKeystoCommandLine,
     ];
   }
 
@@ -27,7 +36,8 @@ export class InputHandler {
     let cursor = this.app.state.cursor;
 
     // Calling each registered key handler.
-    this.keyHandlerFunctions.forEach(func => func(event));
+    let keybindings = this.text_editing_mode ? this.editingKeyHandlerFunctions : this.normalKeyHandlerFunctions;
+    keybindings.forEach(func => func(event));
     // console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
     // console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
   }
@@ -169,12 +179,21 @@ export class InputHandler {
       let zone_content = this.app.state.table.getZone(cursor);
     } else if (control_pressed && event.key == "v") {
       this.app.state.table.applyZone(cursor)
+    } else if (control_pressed && event.key == "x") {
+      this.app.state.table.getZone(cursor);
+      this.eraseCharacters({key: "Backspace"});
     }
   }
 
   commandHandler = (event) => {
+    // Voiding the command buffer line when exiting!
+    if (this.app.state.command_buffer && this.text_editing_mode ) {
+      this.app.state.command_buffer = "";
+    }
+
     if (event.key == "!") {
       console.log("User would like to type a command")
+      this.text_editing_mode = !this.text_editing_mode;
     }
   }
 
@@ -187,5 +206,10 @@ export class InputHandler {
       this.app.state.table_index.previous();
       this.app.state.table = this.app.state.tables[this.app.state.table_index.value];
     }
+  }
+
+  passKeystoCommandLine = (event) => {
+    this.app.state.command_buffer = this.app.state.command_buffer + (event.key).toString();
+    console.log(this.app.state.command_buffer)
   }
 }

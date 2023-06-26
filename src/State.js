@@ -11,6 +11,8 @@ export class State {
       Math.floor(this.app.grid.height / 2)
     );
     this.copy_buffer = [];
+    this.command_buffer = "";
+    this.command_memory = [];
     this.tables = {}
     for (let i = 0; i < table_number; i++) {
       this.tables[i] = new Table(this.app, this.app.grid.width, this.app.grid.height);
