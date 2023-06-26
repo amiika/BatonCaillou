@@ -8,7 +8,7 @@ export class Screen {
       'height': 10, 'width': 10,
     };
     this.fontSize = this.pixel.height;
-    this.fontName = "jgs5"
+    this.fontName = "jgs7"
   }
 
   drawPixel(x, y, color, character) {
@@ -58,12 +58,12 @@ export class Screen {
   computePixelSize() {
     this.pixel.height = this.canvas.height / this.app.grid.height;
     this.pixel.width = (this.canvas.width / this.app.grid.width);
-    this.fontSize = this.pixel.height / 1.25;
+    this.fontSize = this.pixel.height * 1;
   }
 
   refresh() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    this.canvas.width = window.innerWidth * 2;
+    this.canvas.height = window.innerHeight * 2;
     this.computePixelSize();
   }
 
