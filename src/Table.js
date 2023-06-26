@@ -23,11 +23,8 @@ export class Table {
     return table;
   }
 
-  getZone = (cursor) => {
-    let copy_buffer = this.app.state.copy_buffer;
-    let accumulator = []
-    let char_zone = [];
-
+  copyZone = (cursor) => {
+    let accumulator = [], char_zone = []
     for (var i=cursor.x; i < cursor.x + cursor.x_size + 1; i++) {
       if (i > cursor.x) {
         char_zone.push(accumulator)
@@ -37,10 +34,14 @@ export class Table {
         accumulator.push(this.content[i][j].content)
       }
     }
-    this.app.state.copy_buffer = char_zone;
+    return char_zone;
   }
 
-  applyZone = (cursor) => {
+  getZoneInCopyBuffer = (cursor) => {
+    this.app.state.copy_buffer = this.copyZone(cursor);
+  }
+
+  pasteZone = (cursor) => {
     let copy_buffer = this.app.state.copy_buffer;
     copy_buffer.forEach((element, outerIndex) => {
       element.forEach((innerElement, innerIndex) => {

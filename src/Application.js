@@ -26,14 +26,9 @@ export class Application {
     this.forceRedraw = true;
   }
 
-  modIterator = (modulo) => {
-    if (this.iterator % modulo == 0) {
-      return true } else { return false }
-  }
-
   process() {
     this.screen.computePixelSize();
-    this.iterator = this.iterator >= 1000 ? 0 : this.iterator + 1;
+    this.iterator = this.iterator >= 100 ? 0 : this.iterator + 1;
 
     let table = this.state.table;
     let cursor = this.state.cursor;
@@ -52,12 +47,12 @@ export class Application {
 
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
-          const blink = this.iterator%30<15 == 0
+          const blink = this.iterator % 30 < 15 == 0
           this.screen.drawCursor(cursor, this.textColor, this.bgColor, cell, blink)
           cell.redraw = true
         } else {
           // A tile can either be in the selection zone or not
-          if (this.screen.isInSelection(cursor,i,j)){
+          if (this.screen.isInSelection(cursor, i, j)){
             this.screen.drawSelection(i, j, this.bgColor, this.textColor, cell);
             cell.redraw = true
           } else {
