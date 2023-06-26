@@ -1,22 +1,8 @@
 import { Application } from './src/Application.js';
 
-const page = {
-  canvas: document.getElementById("canvas"),
-  scale: window.devicePixelRatio,
-  context: canvas.getContext("2d"),
-  width: Math.floor(window.innerWidth  * window.devicePixelRatio || 2),
-  height: Math.floor(window.innerHeight * window.devicePixelRatio || 2),
-};
-
 // Read tables data from Local Storage
 let saved_tables = localStorage.getItem("tables");
-let FPS = 60;
-
-const app = new Application(
-  page['canvas'], page['context'],
-  saved_tables,
-)
-
+const app = new Application(saved_tables)
 
 window.onbeforeunload = function(){
   // Save state before leaving the page
@@ -25,15 +11,14 @@ window.onbeforeunload = function(){
 
 // Global main loop
 function screenDraw() {
-  app.screen.refresh();
   app.process();
 }
 
 function loop(timeStamp) {
   screenDraw();
 
-  // Request an animation frame
   window.requestAnimationFrame(loop);
+  // Request an animation frame
 }
 
 loop()

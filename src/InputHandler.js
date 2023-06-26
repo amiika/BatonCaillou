@@ -182,6 +182,7 @@ export class InputHandler {
       this.app.state.table.pasteZone(cursor)
     } else if (control_pressed && event.key == "x") {
       this.app.state.table.getZoneInCopyBuffer(cursor);
+      this.app.state.table.copyZoneToText(cursor);
       this.eraseCharacters({key: "Backspace"});
     }
   }

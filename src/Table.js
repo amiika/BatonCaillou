@@ -37,6 +37,16 @@ export class Table {
     return char_zone;
   }
 
+  copyZoneToText = (cursor) => {
+    let zone = this.copyZone(cursor);
+    console.log(zone)
+    let final_text = []
+    zone.forEach((element) => {
+      final_text.append(''.join(element))
+    })
+    console.log(final_text)
+  }
+
   getZoneInCopyBuffer = (cursor) => {
     this.app.state.copy_buffer = this.copyZone(cursor);
   }
