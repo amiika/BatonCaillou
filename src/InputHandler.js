@@ -165,11 +165,10 @@ export class InputHandler {
       for (var i = cursor.x; i < cursor.x + cursor.x_size; i++) {
         for (var j = cursor.y; j < cursor.y + cursor.y_size; j++) {
           table[i][j].replaceContent(" ");
-          cursor.x = cursor.x >= 1 ? cursor.x -= 1 : cursor.x;
         }
       }
+      cursor.x = cursor.x >= 1 ? cursor.x -= 1 : cursor.x;
     }
-
   }
 
   copyPasteHandler = (event) => {
@@ -211,7 +210,7 @@ export class InputHandler {
   }
 
   passKeystoCommandLine = (event) => {
-    var new_string = this.app.state.command_buffer + (event.key).toString()
+    var new_string = this.app.state.command_buffer + String(event.key)
     this.app.state.command_buffer = new_string
     console.log(this.app.state.command_buffer)
   }
