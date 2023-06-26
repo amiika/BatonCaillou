@@ -8,7 +8,7 @@ export class Screen {
       'height': 10, 'width': 10,
     };
     this.fontSize = this.pixel.height;
-    this.fontName = "jgs7";
+    this.fontName = "jgs7"
   }
 
   drawPixel(x, y, color, character) {
@@ -36,10 +36,23 @@ export class Screen {
       (this.pixel.height * y) + Math.floor(this.pixel.height / 1.5))
   }
 
-  drawCursor(x, y, color) {
-    this.context.fillStyle = color;
-    this.context.font = `${this.fontSize}px ${this.fontName}`;
-    this.context.fillText("@", this.pixel.width*x, this.pixel.height*y);
+  drawCursor(cursor, front, back, cell, blink) {
+    if (cursor.x_size > 1 || cursor.y_size > 1 || !cell.isEmpty()) {
+      this.drawPixelWithBackground(cursor.x, cursor.y, back, front, cell.content);
+    } else {
+      if(blink) { // Blink
+        this.drawPixelWithBackground(cursor.x, cursor.y, back, front, cell.content);
+      }
+    }
+  }
+
+  isInSelection(cursor, i, j) {
+    return (i >= cursor.x && i < cursor.x + cursor.x_size)
+            && ((j >= cursor.y && j < cursor.y + cursor.y_size))
+  }
+
+  drawSelection(i,j,back,front,cell) {
+    this.drawPixelWithBackground(i, j, back, front, cell.content);
   }
 
   computePixelSize() {
@@ -58,3 +71,5 @@ export class Screen {
     console.log('Cleaning the screen');
   }
 }
+
+

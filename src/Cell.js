@@ -10,6 +10,10 @@ export class Cell {
     }
   }
 
+  isEmpty() {
+    return this.content == " " || this.content == ""
+  }
+
   replaceContent = (event) => {
     if ("+/-*".includes(event)) {
       this.content = event.toString();
