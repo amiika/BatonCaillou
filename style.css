@@ -8,3 +8,18 @@ body {
   padding: 0;
   background: white;
 }
+
+pre {
+  font-family: 'jgs7', sans-serif;
+  color: #0088FF;
+  background-color: #0000AA;
+  display: block;
+  unicode-bidi: embed;
+  font-family: monospace;
+  white-space: pre;
+}
+
+.selection {
+  color: #0000AA;
+  background-color: #0088FF;
+}

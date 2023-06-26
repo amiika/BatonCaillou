@@ -38,12 +38,34 @@ export class Application {
       
       // Loop trough line cells
       while (xi++ < table.width-1) {
-        text += cursor.x == xi && cursor.y == yi ? '@' : table.content[yi][xi].content;
+
+        const cell = table.content[xi][yi];
+
+        if(cursor.x == xi && cursor.y == yi) {
+          text+="<span class='selection'>"+cell.content+"</span>";
+        } else {
+          // In selection
+          if((xi >= cursor.x && xi < cursor.x + cursor.x_size)
+          && ((yi >= cursor.y && yi < cursor.y + cursor.y_size))) {
+            text+="<span class='selection'>"+cell.content+"</span>";
+          } else {
+            if(cell) {
+              text += cell.content;
+            }
+          }
+        }
+        
+
+        
+
       }
 
       // add new line to text
       text +='\n';
     }
+
     return text;
   }
+
+  
 }

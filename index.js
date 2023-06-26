@@ -13,7 +13,7 @@ let pre_output = document.getElementById("pre_output");
 
 // Global main loop
 function screenDraw() {
-  pre_output.textContent = app.process("text");
+  pre_output.innerHTML = app.process("text");
 }
 
 function loop(timeStamp) {
