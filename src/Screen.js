@@ -9,6 +9,7 @@ export class Screen {
     };
     this.fontSize = this.pixel.height;
     this.fontName = "jgs7"
+    this.refresh()
   }
 
   drawPixel(x, y, color, character) {
@@ -37,11 +38,13 @@ export class Screen {
   }
 
   drawCursor(cursor, front, back, cell, blink) {
-    if (cursor.x_size > 1 || cursor.y_size > 1 || !cell.isEmpty()) {
+    if (cursor.x_size > 1 || cursor.y_size > 1) {
       this.drawPixelWithBackground(cursor.x, cursor.y, back, front, cell.content);
     } else {
       if(blink) { // Blink
         this.drawPixelWithBackground(cursor.x, cursor.y, back, front, cell.content);
+      } else {
+        this.drawPixelWithBackground(cursor.x, cursor.y, front, back, cell.content);
       }
     }
   }
@@ -56,7 +59,7 @@ export class Screen {
   }
 
   computePixelSize() {
-    this.pixel.height = this.canvas.height / this.app.grid.height;
+   this.pixel.height = this.canvas.height / this.app.grid.height;
     this.pixel.width = (this.canvas.width / this.app.grid.width);
     this.fontSize = this.pixel.height * 1;
   }

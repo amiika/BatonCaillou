@@ -8,6 +8,7 @@ export class Cell {
       this.content = null;
       this.replaceContent(char);
     }
+    this.redraw = true
   }
 
   isEmpty() {
@@ -15,6 +16,7 @@ export class Cell {
   }
 
   replaceContent = (event) => {
+    this.redraw = true
     if ("+/-*".includes(event)) {
       this.content = event.toString();
       return;
@@ -30,6 +32,7 @@ export class Cell {
     if (event === " ") {
       this.content = event;
       return;
-    }
+    } 
   }
+
 }

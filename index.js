@@ -21,13 +21,17 @@ window.onbeforeunload = function(){
   localStorage.setItem("tables", app.state.encodeToBase64())
 }
 
+window.onresize = function(){
+  app.screen.refresh();
+  app.forceRedraw = true;
+}
+
 // Global main loop
 function screenDraw() {
-  app.screen.refresh();
   app.process();
 }
 
-function loop(timeStamp) {
+function loop() {
   screenDraw();
 
   // Request an animation frame

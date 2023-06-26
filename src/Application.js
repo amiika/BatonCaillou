@@ -22,6 +22,8 @@ export class Application {
     this.textColor = getComputedStyle(canvas).getPropertyValue("--light-blue")
     // Get background color from CSS
     this.bgColor = getComputedStyle(canvas).getPropertyValue("--blue")
+    // Draw everything at first
+    this.forceRedraw = true;
   }
 
   modIterator = (modulo) => {
@@ -39,8 +41,11 @@ export class Application {
     // Grid drawing routine
     for (let i=0; i < table.length; i++) {
       for (let j=0; j < table.content[i].length; j++) {
+
+        const cell = table.content[i][j]
+
         if (i % 5 == 0 && j % 5 == 0) {
-          if (table.content[i][j+1].content == " ") {
+          if (table.content[i][j+1].content == " " && this.forceRedraw) {
             this.screen.drawPixel(i, j+1, this.textColor, "·")
           }
         }
@@ -48,18 +53,26 @@ export class Application {
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
           const blink = this.iterator%30<15 == 0
-          this.screen.drawCursor(cursor, this.textColor, this.bgColor, table.content[i][j], blink)
+          this.screen.drawCursor(cursor, this.textColor, this.bgColor, cell, blink)
+          cell.redraw = true
         } else {
           // A tile can either be in the selection zone or not
           if (this.screen.isInSelection(cursor,i,j)){
-            this.screen.drawSelection(i, j, this.bgColor, this.textColor, table.content[i][j]);
+            this.screen.drawSelection(i, j, this.bgColor, this.textColor, cell);
+            cell.redraw = true
           } else {
-            this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content);
+            if(cell.redraw || this.forceRedraw) {
+              this.screen.drawPixelWithBackground(i, j, this.textColor, this.bgColor, cell.content);
+              cell.redraw = false
+            }
           }
         }
         
       }
     }
+
+    // Stop redrawing
+    this.forceRedraw = false;
 
     // Drawing the status bar at the top
     [...Array(this.grid.width).keys()].forEach((element) => {
@@ -81,5 +94,6 @@ export class Application {
     // Print command line
     this.screen.drawPixelWithBackground(
       2.15, 0.15, this.textColor, this.bgColor, `▶ ${this.state.command_buffer}`)
+
   }
 }
