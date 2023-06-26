@@ -8,6 +8,11 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 
 - [ ] Fixing canvas drawing (proper pixel size, no blurriness)
 - [ ] Proper resizing user pixel proportions
+- [ ] Drawing loop Optimization
+  - [ ] Do not redraw every tile (only update what has changed)
+  - [ ] Optimize looping over screen and looping over data
+- [ ] Determine the right behavior for blinking cursor
+- [ ] Fix cursor movement: lots of corner cases currently ignored
 
 ## Data
 
@@ -16,6 +21,7 @@ _Bâton Caillou_ is a canvas grid mimicking [ORCA](https://github.com/hundredrab
 - [ ] Split every table in two complementary views
   - [ ] grid view (as is currently implemented)
   - [ ] script view (40 lines long script attached to table)
+  - [ ] Rewrite `localStorage` to store more information about tables
 
 ## Interaction
 
