@@ -25,12 +25,12 @@ export class Table {
 
   copyZone = (cursor) => {
     let accumulator = [], char_zone = []
-    for (var i=cursor.x; i < cursor.x + cursor.x_size + 1; i++) {
-      if (i > cursor.x) {
+    for (var i=cursor.y; i < cursor.y + cursor.y_size + 1; i++) {
+      if (i > cursor.y) {
         char_zone.push(accumulator)
       }
       accumulator = []
-      for (var j=cursor.y; j < cursor.y + cursor.y_size; j++) {
+      for (var j=cursor.x; j < cursor.x + cursor.x_size; j++) {
         accumulator.push(this.content[i][j].content)
       }
     }
@@ -55,7 +55,7 @@ export class Table {
     let copy_buffer = this.app.state.copy_buffer;
     copy_buffer.forEach((element, outerIndex) => {
       element.forEach((innerElement, innerIndex) => {
-        this.content[cursor.x + outerIndex][cursor.y + innerIndex]
+        this.content[cursor.y + outerIndex][cursor.x + innerIndex]
           .replaceContent(innerElement)
       })
     })

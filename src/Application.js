@@ -25,7 +25,7 @@ export class Application {
     return format == "text" ? this.process_text(table,cursor) : false;
   }
 
-  process_text(table,cursor) {
+  process_text(table, cursor) {
     let text = "";
 
     // Y axis index
@@ -54,9 +54,6 @@ export class Application {
             }
           }
         }
-        
-
-        
 
       }
 

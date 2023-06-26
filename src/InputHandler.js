@@ -38,8 +38,8 @@ export class InputHandler {
     // Calling each registered key handler.
     let keybindings = this.text_editing_mode ? this.editingKeyHandlerFunctions : this.normalKeyHandlerFunctions;
     keybindings.forEach(func => func(event));
-    // console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
-    // console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
+     console.log(`X: ${cursor.x}, Y: ${cursor.y}`);
+     console.log(`XS: ${cursor.x_size}, YS: ${cursor.y_size}`);
   }
 
   keyUpListener = (event) => {
@@ -172,18 +172,20 @@ export class InputHandler {
   }
 
   copyPasteHandler = (event) => {
-    let cursor = this.app.state.cursor;
-    let grid = this.app.grid;
-    let copy_buffer = this.app.state.copy_buffer
     let control_pressed = this.keyPresses["Control"] ? true : false;
-    if (control_pressed && event.key == "c") {
-      let zone_content = this.app.state.table.getZoneInCopyBuffer(cursor);
-    } else if (control_pressed && event.key == "v") {
-      this.app.state.table.pasteZone(cursor)
-    } else if (control_pressed && event.key == "x") {
-      this.app.state.table.getZoneInCopyBuffer(cursor);
-      this.app.state.table.copyZoneToText(cursor);
-      this.eraseCharacters({key: "Backspace"});
+    if(control_pressed) {
+      let cursor = this.app.state.cursor;
+      let grid = this.app.grid;
+      let copy_buffer = this.app.state.copy_buffer
+      if (event.key == "c") {
+        let zone_content = this.app.state.table.getZoneInCopyBuffer(cursor);
+      } else if (event.key == "v") {
+        let zone_content = this.app.state.table.pasteZone(cursor)
+      } else if (event.key == "x") {
+        this.app.state.table.getZoneInCopyBuffer(cursor);
+        this.app.state.table.copyZoneToText(cursor);
+        this.eraseCharacters({key: "Backspace"});
+      }
     }
   }
 
