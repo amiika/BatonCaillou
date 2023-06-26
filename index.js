@@ -33,10 +33,7 @@ function loop(timeStamp) {
   screenDraw();
 
   // Request an animation frame
-  // 
-  setTimeout(() => {
-    window.requestAnimationFrame(loop);
-  }, 1000 / FPS);
+  window.requestAnimationFrame(loop);
 }
 
 loop()
