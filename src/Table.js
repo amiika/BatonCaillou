@@ -8,7 +8,7 @@ export class Table {
     this.content = this.createEmptyTable();
   }
 
-  get length() {
+  get length() {
     return this.content.length;
   }
   
@@ -17,7 +17,7 @@ export class Table {
     for (var i=0; i < this.width; i++) {
       table[i] = [];
       for (var j=0; j < this.height; j++) {
-        table[i][j] = new Cell(".")
+        table[i][j] = new Cell(" ")
       }
     }
     return table;

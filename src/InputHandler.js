@@ -71,10 +71,10 @@ export class InputHandler {
         if (shift) {
           cursor.y_size =  cursor.y_size > 1 ? cursor.y_size - 1 : cursor.y_size
         } else {
-          cursor.y = cursor.y <= 0 ? cursor.y : cursor.y -= amount;
+          cursor.y = cursor.y <= 1 ? cursor.y : cursor.y -= amount;
         }
       } else if (amount > 1) {
-        cursor.y = cursor.y - amount < 0 ? cursor.y : cursor.y - amount;
+        cursor.y = cursor.y - amount < 1 ? cursor.y : cursor.y - amount;
       } else {
 
       }
@@ -153,7 +153,7 @@ export class InputHandler {
     if (event.key == "Backspace") {
       for (var i = cursor.x; i < cursor.x + cursor.x_size; i++) {
         for (var j = cursor.y; j < cursor.y + cursor.y_size; j++) {
-          table[i][j].replaceContent(".");
+          table[i][j].replaceContent(" ");
         }
       }
     }
@@ -179,11 +179,11 @@ export class InputHandler {
   }
 
   gridPageHandler = (event) => {
-    if (event.key == "PageUp") {
+    if (event.key == "PageUp" || event.key == ">") {
       this.app.state.table_index.next();
       this.app.state.table = this.app.state.tables[this.app.state.table_index.value];
     }
-    if (event.key == "PageDown") {
+    if (event.key == "PageDown" || event.key == "<") {
       this.app.state.table_index.previous();
       this.app.state.table = this.app.state.tables[this.app.state.table_index.value];
     }

@@ -6,7 +6,7 @@ export class Application {
   constructor(canvas, context, saved_tables) {
     // Table Grid Size
     this.grid = {
-      height: 40, width: 80,
+      height: 40, width: 60,
     }
     this.table_number = 48;
 
@@ -32,6 +32,17 @@ export class Application {
     }
     let table = this.state.table;
     let cursor = this.state.cursor;
+
+    for (let i=0; i < table.length; i++) {
+      for (let j=0; j < table.content[i].length; j++) {
+        if (i % 5 == 0 && j % 5 == 0) {
+          if (table.content[i][j+1].content == " ") {
+            this.screen.drawPixel(i, j+1, this.textColor, "·")
+          }
+        }
+      }
+    }
+
 
     // Grid drawing routine
     for (let i=0; i < table.length; i++) {
