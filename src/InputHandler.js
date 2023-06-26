@@ -51,7 +51,7 @@ export class InputHandler {
   keyDownHandler = (event) => {
     let cursor = this.app.state.cursor;
     let grid = this.app.grid;
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key == "Enter") {
       let amount = this.keyPresses["Control"] ? 5 : 1;
       let shift = this.keyPresses["Shift"] ? true : false;
 

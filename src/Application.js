@@ -24,14 +24,9 @@ export class Application {
     this.bgColor = getComputedStyle(canvas).getPropertyValue("--blue")
   }
 
-  modIterator = (modulo) => {
-    if (this.iterator % modulo == 0) {
-      return true } else { return false }
-  }
-
   process() {
     this.screen.computePixelSize();
-    this.iterator = this.iterator >= 1000 ? 0 : this.iterator + 1;
+    this.iterator = this.iterator >= 100 ? 0 : this.iterator + 1;
 
     let table = this.state.table;
     let cursor = this.state.cursor;
@@ -39,6 +34,9 @@ export class Application {
     // Grid drawing routine
     for (let i=0; i < table.length; i++) {
       for (let j=0; j < table.content[i].length; j++) {
+
+
+        // Draw guideline
         if (i % 5 == 0 && j % 5 == 0) {
           if (table.content[i][j+1].content == " ") {
             this.screen.drawPixel(i, j+1, this.textColor, "·")
@@ -47,11 +45,11 @@ export class Application {
 
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
-          const blink = this.iterator%30<15 == 0
+          const blink = this.iterator % 30 < 15 == 0
           this.screen.drawCursor(cursor, this.textColor, this.bgColor, table.content[i][j], blink)
         } else {
           // A tile can either be in the selection zone or not
-          if (this.screen.isInSelection(cursor,i,j)){
+          if (this.screen.isInSelection(cursor, i, j)){
             this.screen.drawSelection(i, j, this.bgColor, this.textColor, table.content[i][j]);
           } else {
             this.screen.drawPixel(i, j, this.textColor, table.content[i][j].content);
