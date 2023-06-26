@@ -24,16 +24,19 @@ export class Application {
     this.bgColor = getComputedStyle(canvas).getPropertyValue("--blue")
   }
 
-  process() {
+  modIterator = (modulo) => {
+    if (this.iterator % modulo == 0) {
+      return true } else { return false }
+  }
 
+  process() {
     this.screen.computePixelSize();
-    this.iterator++;
-    if (this.iterator >= 1000) {
-      this.iterator = 0;
-    }
+    this.iterator = this.iterator >= 1000 ? 0 : this.iterator + 1;
+
     let table = this.state.table;
     let cursor = this.state.cursor;
 
+    // Grid drawing routine
     for (let i=0; i < table.length; i++) {
       for (let j=0; j < table.content[i].length; j++) {
         if (i % 5 == 0 && j % 5 == 0) {
@@ -41,13 +44,6 @@ export class Application {
             this.screen.drawPixel(i, j+1, this.textColor, "·")
           }
         }
-      }
-    }
-
-
-    // Grid drawing routine
-    for (let i=0; i < table.length; i++) {
-      for (let j=0; j < table.content[i].length; j++) {
 
         // Cursor Drawing
         if (i == cursor.x && j == cursor.y) {
